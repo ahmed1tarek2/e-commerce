@@ -28,8 +28,8 @@ export default function MySwiper() {
               fill
               className="object-cover rounded-lg"
             />
-            <SwiperDetails />
           </div>
+          <SwiperDetails />
         </SwiperSlide>
 
         <SwiperSlide>
@@ -40,22 +40,9 @@ export default function MySwiper() {
               fill
               className="object-cover rounded-lg"
             />
-            <SwiperDetails />
           </div>
+          <SwiperDetails />
         </SwiperSlide>
-
-        <SwiperSlide>
-          <div className="relative w-full h-[31.25rem]">
-            <Image
-              src="/slide2.png"
-              alt="Pizza"
-              fill
-              className="object-cover rounded-lg"
-            />
-            <SwiperDetails />
-          </div>
-        </SwiperSlide>
-
         <SwiperSlide>
           <div className="relative w-full h-[31.25rem]">
             <Image

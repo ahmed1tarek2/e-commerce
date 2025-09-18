@@ -1,4 +1,4 @@
-import MySwiper from "./swiperDetails.jsx/swiper"
+import MySwiper from "./uiComp/swiper"
 
 const Banner1 = () => {
     return(
