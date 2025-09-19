@@ -6,6 +6,8 @@ import Banner3 from "./ui/banner3";
 import Banner4 from "./ui/banner4";
 import Save10 from "./ui/save10";
 import Grocery from "./ui/uiComp/grocery";
+import CategorySwiper from "./ui/uiComp/swiper2";
+import BestSeller from "./ui/bestSeller";
 
 const MainPage = () => {
   return (
@@ -46,27 +48,29 @@ const MainPage = () => {
           desc="Breakfast made better"
         />
       </div>
+      <Save10 />
       <div className="w-[74rem] grid grid-cols-3 gap-5 py-5">
         <Grocery
           photo="/gro1.png"
           gro="Grocery"
           head="But I must explain to you how all this mistaken idea"
-          date='Jan 13 2025'
+          date="Jan 13 2025"
         />
         <Grocery
           photo="/gro2.png"
           gro="Grocery"
-          head="The Problem With Typefaces on the Web"
-          date='Jan 13 2025'
+          head="The Probleme With Typefacees on the Web"
+          date="Jan 13 2025"
         />
-       <Grocery
+        <Grocery
           photo="/gro3.png"
           gro="Grocery"
           head="English Breakfast Tea With Tasty Donut Desserts"
-          date='Jan 13 2025'
+          date="Jan 13 2025"
         />
       </div>
-      <Save10 />
+      <CategorySwiper/>
+      <BestSeller/>
     </div>
   );
 };
