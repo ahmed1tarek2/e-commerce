@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dosis.variable} ${inter.variable} antialiased`}
       >
+        
         {children}
       </body>
     </html>
