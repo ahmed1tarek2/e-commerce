@@ -30,6 +30,13 @@ const Bottom = () => {
           About
           <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#35AFA0] transition-all duration-300 group-hover:w-full"></span>
         </Link>
+        <Link
+          href="/blog"
+          className="relative px-4 py-2 text-gray-700 font-medium hover:text-[#35AFA0] transition duration-300 group"
+        >
+          Blog
+          <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#35AFA0] transition-all duration-300 group-hover:w-full"></span>
+        </Link>
 
         <Link
           href="/contact"
