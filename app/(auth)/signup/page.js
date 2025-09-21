@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import api from "@/lib/axios";
+import { toast } from "react-toastify";
 
 
 export default function Loign() {
@@ -10,20 +12,18 @@ export default function Loign() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  async function handleSignup(e) {
-    e.preventDefault();
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (res.ok) {
-      router.push("/login");
-    } else {
-      alert("Signup failed");
-    }
-  }
-
+ const handleSignup = async (e) => {
+   e.preventDefault();
+   try {
+     const res = await api.post("/auth/signup", { email, password ,name});
+     if (res.status === 201) {
+       toast.success("Signup successful ");
+       router.push("/login");
+     }
+   } catch (err) {
+     toast.error(err.response?.data?.error || "Signup failed ");
+   }
+ };
   return (
     <form
       onSubmit={handleSignup}

@@ -13,7 +13,7 @@ const page = () => {
         </p>
       </div>
 
-      <div className="flex items-center gap-8 mt-7">
+      <div className="flex flex-col lg:flex-row items-center flex-wrap gap-8 mt-7">
         <Box
           title={"102 Street 2714 Donovan"}
           text={"Lorem ipsum dolar site amet discont"}
@@ -46,7 +46,7 @@ const page = () => {
           Lorem Ipsum has been the industry's standard dummy text.
         </p>
 
-        <div className="flex flex-col md:flex-row items-center gap-8 w-[350px] md:w-[700px]">
+        <div className="flex flex-col lg:flex-row items-center gap-8 md:w-[400px] w-[200px]  lg:w-[700px]">
           <div className="w-full">
             <label className="text-black/70" htmlFor="name">
               Your Name
@@ -69,7 +69,7 @@ const page = () => {
           </div>
         </div>
 
-        <div className="mt-6 w-[350px] md:w-[700px]">
+        <div className="mt-6 md:w-[400px] w-[200px]  lg:w-[700px]">
           <label className="text-black/70" htmlFor="name">
             Message
           </label>

@@ -1,19 +1,19 @@
-import jwt from "jsonwebtoken";
-import { getCookie } from "cookies-next";
+import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { verifyToken } from "@/lib/auth";
 
-export async function GET(req) {
-  try {
-    const token = getCookie("token", { req, res: undefined });
-    if (!token)
-      return new Response(JSON.stringify({ error: "Not authenticated" }), {
-        status: 401,
-      });
+export async function GET() {
+  const token =await  cookies().get("user")?.value;
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "secret");
-    return new Response(JSON.stringify({ user: decoded }), { status: 200 });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Invalid token" }), {
-      status: 403,
-    });
+  if (!token) {
+    return NextResponse.json({ user: null }, { status: 401 });
   }
+
+  const decoded = verifyToken(token);
+
+  if (!decoded) {
+    return NextResponse.json({ user: null }, { status: 403 });
+  }
+
+  return NextResponse.json({ user: { email: decoded.email } }, { status: 200 });
 }

@@ -44,7 +44,7 @@ const page = () => {
         </div>
 
         {/* image with text */}
-        <div className="flex items-start gap-4 mt-20 relative">
+        <div className="flex flex-col items-start lg:flex-row lg:items-start gap-4 mt-20 relative">
           <Image
             src="/14528309d59c6a0c3a34eb8a4bc0b7ffe864f983.png"
             alt="man image"
@@ -57,7 +57,7 @@ const page = () => {
               objectFit: "cover",
             }}
           />
-          <div className="text-[14px] leading-6 absolute bottom-[-60px] rounded-xl left-[159px] bg-white p-8">
+          <div className="hidden lg:block text-[14px] leading-6 absolute bottom-[-60px] rounded-xl left-[159px] bg-white p-8">
             In nec purus eget neque accumsan finibus. Duis condimentum elit ut
             libero commodo iaculis. Donec augue diam, tristique et ultricies
             nec, consectetur quis enim. Nullam id rutrum ex. Aliquam a lectus id

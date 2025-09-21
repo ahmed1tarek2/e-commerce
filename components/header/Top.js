@@ -3,7 +3,7 @@ import React from "react";
 
 const Top = () => {
   return (
-    <div className="flex flex-col text-[14px] border-b border-gray-100">
+    <div className="lg:flex hidden flex-col text-[14px] border-b border-gray-100">
       <p className=" bg-[#35AFA0]  text-white py-1 text-center">
         Due to current circumstances, there may be slight delays in order
         processing

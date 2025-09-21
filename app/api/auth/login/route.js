@@ -1,53 +1,35 @@
-import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { createToken, comparePassword, verifyToken } from "@/lib/auth";
 
 export async function POST(req) {
-  try {
-    const { email, password } = await req.json();
+  const { email, password } = await req.json();
 
-    if (!email || !password) {
-      return new Response(
-        JSON.stringify({ message: "Email and password required" }),
-        { status: 400 }
-      );
-    }
+  const cookieStore =await cookies();
+  const token = cookieStore.get("user")?.value;
 
-    // Get users from cookie
-    const cookieStore = cookies();
-    const usersCookie = cookieStore.get("users");
-    let users = usersCookie ? JSON.parse(usersCookie.value) : [];
-
-    // Find user
-    const user = users.find((u) => u.email === email);
-    if (!user) {
-      return new Response(JSON.stringify({ message: "User not found" }), {
-        status: 404,
-      });
-    }
-
-    // Compare password
-    const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) {
-      return new Response(JSON.stringify({ message: "Invalid password" }), {
-        status: 401,
-      });
-    }
-
-    // Save current session
-    cookies().set("session", email, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      path: "/",
-    });
-
-    return new Response(JSON.stringify({ message: "Login successful!" }), {
-      status: 200,
-    });
-  } catch (error) {
-    return new Response(
-      JSON.stringify({ message: "Error logging in", error: error.message }),
-      { status: 500 }
-    );
+  if (!token) {
+    return NextResponse.json({ error: "No user registered" }, { status: 404 });
   }
+
+  const decoded = verifyToken(token);
+
+  if (!decoded) {
+    return NextResponse.json({ error: "Invalid token" }, { status: 403 });
+  }
+
+  const isMatch = await comparePassword(password, decoded.password);
+
+  if (!isMatch || decoded.email !== email) {
+    return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
+  }
+
+  const newToken = createToken({ email, password: decoded.password });
+  cookies().set("user", newToken, {
+    httpOnly: true,
+    maxAge: 7 * 24 * 60 * 60,
+    path: "/",
+  });
+
+  return NextResponse.json({ message: "Login success" }, { status: 200 });
 }
