@@ -8,6 +8,8 @@ import Save10 from "./ui/save10";
 import Grocery from "./ui/uiComp/grocery";
 import CategorySwiper from "./ui/uiComp/swiper2";
 import BestSeller from "./ui/bestSeller";
+import Category from "./ui/uiComp/Category";
+import FeaturedPro from "./ui/featured";
 
 const MainPage = () => {
   return (
@@ -69,8 +71,9 @@ const MainPage = () => {
           date="Jan 13 2025"
         />
       </div>
-      <CategorySwiper/>
+      <CategorySwiper card={<Category/>}/>
       <BestSeller/>
+      <FeaturedPro/>
     </div>
   );
 };

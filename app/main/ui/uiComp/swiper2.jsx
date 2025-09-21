@@ -8,17 +8,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react"; // ✅ استيراد 
 import "swiper/css";
 import "swiper/css/navigation";
 
-const categories = [
-  { image: "/swiper2.png", title: "Beverages", items: 11 },
-  { image: "/swiper2.png", title: "Biscuits & Snacks", items: 6 },
-  { image: "/swiper2.png", title: "Breads & Bakery", items: 6 },
-  { image: "/swiper2.png", title: "Breakfast & Dairy", items: 8 },
-  { image: "/swiper2.png", title: "Frozen Foods", items: 7 },
-  { image: "/swiper2.png", title: "Frozen Foods", items: 7 },
-  { image: "/swiper2.png", title: "Frozen Foods", items: 7 },
-];
 
-export default function CategorySwiper() {
+
+export default function CategorySwiper({card}) {
   return (
     <div className="w-full max-w-6xl mx-auto py-6 relative">
       {/* زرار الشمال */}
@@ -47,22 +39,7 @@ export default function CategorySwiper() {
           1024: { slidesPerView: 5 },
         }}
       >
-        {categories.map((cat, i) => (
-          <SwiperSlide key={i}>
-            <div className="border border-[#E4E5EE] rounded-lg p-4 text-center bg-white hover:shadow-md transition">
-              <div className="w-full h-40 relative ">
-                <Image
-                  src={cat.image}
-                  alt={cat.title}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="font-semibold text-[#202435]">{cat.title}</h3>
-              <p className="text-sm text-[#202435] font-light ">{cat.items} Items</p>
-            </div>
-          </SwiperSlide>
-        ))}
+        {card}
       </Swiper>
     </div>
   );
