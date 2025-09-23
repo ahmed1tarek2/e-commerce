@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Productcard from "./Productcard";
 import Pagination from "./Pagination";
-
+import useSelector from "react-redux"
 const Itemsshop = () => {
+  // const products = useSelector((state) => state.products.items)
   return (
     <div className="grow-10 px-2">
       {/* image div */}
@@ -26,26 +27,12 @@ const Itemsshop = () => {
           <span className="font-medium">Alphabetically,A-Z</span>
         </div>
       </div>
-
-      {/* product div */}
-      <div className="rounded-md mt-2 border border-gray-200 grid grid-cols-4">
-        {/* product card */}
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        <Productcard />
-        
-      </div>
+      {/* product card */}
+      <Productcard />
       {/* pagination */}
-      <Pagination />
+      {/* {products.length >= 1 ? (
+        <Pagination getPage={1} pageCount={500} />
+      ) : null} */}
     </div>
   );
 };
