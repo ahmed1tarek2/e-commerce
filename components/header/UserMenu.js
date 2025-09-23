@@ -3,24 +3,33 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { User } from "lucide-react";
-import api from "@/lib/axios"; 
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser,userData } from "@/lib/redux/featuers/authSlice";
+import { useUser } from "@/hooks/useUser";
 
 export default function UserMenu() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
-  const [user, setUser] = useState(null);
   const router = useRouter();
+  const dispatch = useDispatch();
+  // const { loading, error,user } = useSelector((state) => state.auth);
+   const { user, loading } = useUser();
+  const getUserData = async()=>{
+     try {
+       const result = await dispatch(userData());
+       if (result.meta.requestStatus === "fulfilled") {
 
+       }
+     } catch (err) {
+       toast.error("Logout failed ");
+     }
+  }
   // Fetch logged-in user
-  useEffect(() => {
-    api
-      .get("/auth/user")
-      .then((res) => setUser(res.data.user))
-      .catch(() => setUser(null));
-  }, []);
+  // useEffect(() => {
+  //   getUserData();
+  // }, []);
 
   // Close dropdown if clicked outside
   useEffect(() => {
@@ -37,10 +46,12 @@ export default function UserMenu() {
 
   const handleLogout = async () => {
     try {
-      await api.post("/auth/logout");
-      setUser(null);
-      toast.success("Logged out");
-      router.push('/login')
+      const result = await dispatch(logoutUser());
+      if(result.meta.requestStatus === "fulfilled")     {
+         toast.success("Logged out");
+         router.push('/login')
+      } 
+   
     } catch (err) {
       toast.error("Logout failed ");
     }

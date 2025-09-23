@@ -25,11 +25,11 @@ export async function POST(req) {
   }
 
   const newToken = createToken({ email, password: decoded.password });
-  cookies().set("user", newToken, {
+   cookieStore.set("user", newToken, {
     httpOnly: true,
     maxAge: 7 * 24 * 60 * 60,
     path: "/",
   });
 
-  return NextResponse.json({ message: "Login success" }, { status: 200 });
+  return NextResponse.json({ message: "Login success",data:{email,password} }, { status: 200 });
 }

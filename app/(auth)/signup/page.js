@@ -1,29 +1,32 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import api from "@/lib/axios";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { signupUser } from "@/lib/redux/featuers/authSlice";
 
-
-export default function Loign() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Signup() {
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const dispatch = useDispatch();
   const router = useRouter();
+  const { loading, error } = useSelector((state) => state.auth);
 
- const handleSignup = async (e) => {
-   e.preventDefault();
-   try {
-     const res = await api.post("/auth/signup", { email, password ,name});
-     if (res.status === 201) {
-       toast.success("Signup successful ");
-       router.push("/login");
-     }
-   } catch (err) {
-     toast.error(err.response?.data?.error || "Signup failed ");
-   }
- };
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.password) {
+      toast.error("Please Enter All Data");
+      return;
+    }
+    const result = await dispatch(signupUser(form));
+    if (result.meta.requestStatus === "fulfilled") {
+      toast.success("Signup successful ");
+      router.push("/login");
+    } else {
+      toast.error(result.payload || "Signup failed");
+    }
+  };
+
   return (
     <form
       onSubmit={handleSignup}
@@ -34,13 +37,13 @@ export default function Loign() {
       </h2>
 
       <input
-        id="text"
+        id="name"
         className="w-full border mt-1 bg-indigo-500/5 mb-2 border-gray-500/10 outline-none rounded py-2.5 px-3"
         type="text"
         placeholder="Username"
         required
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={form.name}
+        onChange={(e) => setForm({ ...form, name: e.target.value })}
       />
       <input
         id="email"
@@ -48,8 +51,8 @@ export default function Loign() {
         type="email"
         placeholder="Email"
         required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={form.email}
+        onChange={(e) => setForm({ ...form, email: e.target.value })}
       />
       <input
         id="password"
@@ -57,16 +60,22 @@ export default function Loign() {
         type="password"
         placeholder="Password"
         required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        value={form.password}
+        onChange={(e) => setForm({ ...form, password: e.target.value })}
       />
 
-      <button className="w-full mb-3 bg-[#35AFA0] transition-all active:scale-95 py-2.5 rounded text-white font-medium">
-        Create Account
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full mb-3 bg-[#35AFA0] transition-all active:scale-95 py-2.5 rounded text-white font-medium"
+      >
+        {loading ? "Creating account..." : "Create Account"}
       </button>
 
+      {error && <p className="text-red-500 text-center">{error}</p>}
+
       <p className="text-center mt-4">
-        Already have an account
+        Already have an account?{" "}
         <Link href="/login" className="text-[#35AFA0] underline">
           Log In
         </Link>

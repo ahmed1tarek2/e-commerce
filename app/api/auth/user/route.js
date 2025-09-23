@@ -3,7 +3,8 @@ import { cookies } from "next/headers";
 import { verifyToken } from "@/lib/auth";
 
 export async function GET() {
-  const token =await  cookies().get("user")?.value;
+  const cookiesStore = await cookies();
+  const token = cookiesStore.get("user")?.value;
 
   if (!token) {
     return NextResponse.json({ user: null }, { status: 401 });

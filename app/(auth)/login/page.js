@@ -1,27 +1,34 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import api from "@/lib/axios";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "@/lib/redux/featuers/authSlice";
 
 export default function Loign() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { user, loading, error } = useSelector((state) => state.auth);
 
-   const handleLogin = async (e) => {
-     e.preventDefault();
-     try {
-       const res = await api.post("/auth/login", { email, password });
-       if (res.status === 200) {
-         toast.success("Login successful ");
-         router.push("/");
-       }
-     } catch (err) {
-       toast.error(err.response?.data?.error || "Login failed ");
-     }
-   };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return toast.error("Please fill all fields");
+    }
+    try {
+      const res = await dispatch(loginUser({ email, password }));
+      if (res.meta.requestStatus === "fulfilled") {
+        toast.success("Login successful ");
+        router.push("/");
+      }
+    } catch (err) {
+      toast.error(result.payload || "Signup failed");
+    }
+  };
   return (
     <form
       onSubmit={handleLogin}
@@ -50,9 +57,15 @@ export default function Loign() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button className="w-full mb-3 bg-[#35AFA0] transition-all active:scale-95 py-2.5 rounded text-white font-medium">
-        Log In
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full mb-3 bg-[#35AFA0] transition-all active:scale-95 py-2.5 rounded text-white font-medium"
+      >
+        {loading ? "Login..." : "Login"}
       </button>
+
+      {error && <p className="text-red-500 text-center">{error}</p>}
 
       <p className="text-center mt-4">
         Already have an account?

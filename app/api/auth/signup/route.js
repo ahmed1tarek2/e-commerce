@@ -9,7 +9,7 @@ export async function POST(req) {
     return NextResponse.json({ error: "Email & password required" }, { status: 400 });
   }
   const hashed = await hashPassword(password);
-  const token = createToken({ email, password: hashed,name });
+  const token = createToken({ email, password: hashed, name });
 
    const cookieStore = await cookies();
    cookieStore.set("user", token, {
@@ -19,5 +19,5 @@ export async function POST(req) {
    });
 
 
-  return NextResponse.json({ message: "Signup success" }, { status: 201 });
+  return NextResponse.json({ message: "Signup success",data:{email,password,name} }, { status: 201 });
 }
