@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import { ShoppingCart, Menu, X } from "lucide-react";
-import Link from "next/link"
+import Link from "next/link";
 import Bottom from "./Bottom";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import CartModal from "./CartModal";
+import CartModal from "../CartModal";
 
-
-
-const NavIcons = () => {
-    const [isProfileOpen, setIsProfileOPen] = useState(false)
-    const [isCartOpen, setIsCartOPen] = useState(false)
-
-
-        const router = useRouter()
-
-}
 const Nav = ({ open, setOpen }) => {
+  const [isCartOpen, setIsCartOpen] = useState(false); // ✅ صححنا هنا
+  const router = useRouter();
+
   return (
     <nav className="w-full border-b border-gray-100 bg-white">
       <div className="flex items-center justify-between lg:px-48 px-6 py-3 mx-auto container">
@@ -51,15 +43,19 @@ const Nav = ({ open, setOpen }) => {
           </div>
 
           {/* Cart */}
-          <div className="relative cursor-pointer">
-            <ShoppingCart className="w-6 h-6" onClick={() => setIsCartOPen((prev) => !prev)}/>
+          <div
+            className="relative cursor-pointer"
+            onClick={() => setIsCartOpen((prev) => !prev)} // ✅ صححنا هنا
+          >
+            <ShoppingCart className="w-6 h-6" />
+            <CartModal
+              isCartOpen={isCartOpen}
+              onClose={() => setIsCartOpen(false)} // ✅ صححنا هنا
+            />
             <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#35AFA0] text-white text-xs flex items-center justify-center">
               0
             </span>
-            {/* {isCartOpen && <CartModal/>} */}
           </div>
-       
-          
 
           {/* Mobile Menu Button */}
           <button
@@ -110,7 +106,6 @@ const Nav = ({ open, setOpen }) => {
 };
 
 export default Nav;
-
 
 
 // import React from 'react'
