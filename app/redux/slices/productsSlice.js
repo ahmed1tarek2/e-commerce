@@ -6,9 +6,21 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
       const res = await axios.get("https://dummyjson.com/products");
-      const data = res.data
-      console.log("API Data:", data);
-    return data; // ← هنا بيجي Array من المنتجات
+      const data = res.data;
+      // لو Array
+    if (Array.isArray(data)) return data;
+
+    // لو فيه data.products بس جواها object
+    if (data.products && typeof data.products === "object") {
+      return Object.values(data.products);
+    }
+
+    // لو data نفسه object فيه المنتجات
+    if (typeof data === "object") {
+      return Object.values(data);
+    }
+
+    return [];
   }
 );
 

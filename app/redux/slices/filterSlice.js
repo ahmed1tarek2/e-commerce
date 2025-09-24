@@ -1,30 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-// const filterCategorySlice = createSlice({
-//   name: "filterCategory",
-//   initialState: {
-//     selectedCategories: [],
-//   },
-//   reducers: {
-//     toggleCategory: (state, action) => {
-//       const category = action.payload;
-//       if (state.selectedCategories.includes(category)) {
-//         state.selectedCategories = state.selectedCategories.filter(
-//           (c) => c !== category
-//         );
-//       } else {
-//         state.selectedCategories.push(category);
-//       }
-//     },
-//     clearCategories: (state) => {
-//       state.selectedCategories = [];
-//     },
-//   },
-// });
-
-// export const { toggleCategory, clearCategories } = filterCategorySlice.actions;
-// export default filterCategorySlice.reducer;
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const filterSlice = createSlice({
@@ -32,8 +5,8 @@ const filterSlice = createSlice({
   initialState: {
     selectedCategories: [],
     selectedbrands: [],
-    selectedstock: null,
-    togglePriceRange: { min: 0, max: 99999 },
+    selectedstock: [],
+    PriceRange: { min: 0, max: 99999 },
   },
   reducers: {
     toggleCategory: (state, action) => {
@@ -63,15 +36,8 @@ const filterSlice = createSlice({
       }
     },
     togglePriceRange: (state, action) => {
-      const range = action.payload;
-      const isExist = state.priceRange.some(
-        (r) => r.min === range.min && r.max === range.max
-      );
-      state.priceRange = isExist
-        ? state.priceRange.filter(
-            (r) => !(r.min === range.min && r.max === range.max)
-          )
-        : [...state.priceRange, range];
+      state.PriceRange.min = action.payload.min;
+      state.PriceRange.max = action.payload.max;
     },
   },
 });

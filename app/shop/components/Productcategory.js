@@ -5,40 +5,33 @@ import { toggleCategory } from '@/app/redux/slices/filterSlice';
 
 const Productcategory = () => {
   const dispatch = useDispatch();
-  const filters = useSelector(state => state.filters)
-  const products = useSelector(state => state.products.items)
-  
-  const categories = products.category;
-  console.log(products)
-  // const categoriesCount = products.reduce((acc, product) => {
-  //   acc[product.category] = (acc[product.category] || 0) + 1;
-  //   return acc;
-  // }, {});
-// const categories = Object.keys(categoriesCount);
- 
-  // const selectedCategories = useSelector(
-  //   (state) => state.filters.selectedCategories
-  // );
+  const {selectedCategories} = useSelector((state) => state.filters);
+  const items = useSelector(state => state.products.items)
 
+  const allcategory = [...new Set((items.map(c=> c.category || "...")))]
 
   return (
     <div className="mb-4">
       <p className="font-medium">PRODUCT CATEGORIES</p>
       <div>
         <ul className="text-gray-500">
-          {categories?.map((cat) => {
+          {allcategory.map((cat, i) => {
+            const count = items.filter(c => c.category === cat).length;
             return (
-              <li key={cat} className="mb-1">
-                <input
-                  type="checkbox"
-                  id="check1"
-                  className="mr-2 "
-                  checked={filters.categories.includes(cat)}
-                  onChange={() => dispatch(toggleCategory(cat))}
-                />
-                <label key={cat} htmlFor="check1" className="text-color1">
-                  {cat} 
-                </label>
+              <li key={i} className="mb-1 flex justify-between">
+                <div className="flex justify-between">
+                  <input
+                    type="checkbox"
+                    id="check1"
+                    className="mr-2 "
+                    checked={selectedCategories.includes(cat)}
+                    onChange={() => dispatch(toggleCategory(cat))}
+                  />
+                  <label key={cat} htmlFor="check1" className="text-color1">
+                    {cat}
+                  </label>
+                </div>
+                <label className="ml-1">({count})</label>
               </li>
             );
           })}
