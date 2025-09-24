@@ -1,7 +1,7 @@
-import CustomizeProducts from "@/components/CustomizeProducts"
-import ProductImages from "@/components/ProductImages"
+import CustomizeProducts from "../../components/CustomizeProducts"
+import ProductImages from "../../components/ProductImages"
 import Image from "next/image"
-import Add from "@/components/Add"
+import Add from "../../components/Add"
 
 const SinglePage = () => {
   return (

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { createToken, comparePassword, verifyToken } from "@/lib/auth";
+import { createToken, comparePassword, verifyToken } from "../../../lib/auth";
 
 export async function POST(req) {
   const { email, password } = await req.json();

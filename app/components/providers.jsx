@@ -1,7 +1,7 @@
 "use client";
 
 import { Provider } from "react-redux";
-import { store } from "@/lib/redux/store";
+import { store } from "../redux/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

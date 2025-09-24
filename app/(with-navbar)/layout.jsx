@@ -1,4 +1,4 @@
-import NavBar from "@/components/header/NavBar";
+import NavBar from "../components/header/NavBar";
 // import Footer from "@/components/Footer"
 
 export default function WithNavbarLayout({children}) {

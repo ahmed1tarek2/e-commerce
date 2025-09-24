@@ -6,9 +6,8 @@ import { User } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser, userData } from "@/lib/redux/features/authSlice";
-
-import { useUser } from "@/hooks/useUser";
+import { logoutUser, userData } from "../../redux/slices/authSlice";
+import { useUser } from "../../hooks/useUser";
 
 export default function UserMenu() {
   const [open, setOpen] = useState(false);

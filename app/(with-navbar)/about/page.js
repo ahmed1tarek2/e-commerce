@@ -7,7 +7,7 @@ const page = () => {
       {/* main image */}
       <div className="relative">
         <Image
-          src="/b778f93e94e5a9aa3f318fc950de89bdf715c887.jpg"
+          src="/foodbaner.jpg"
           alt="Food Banner"
           width={1000}
           height={350}
@@ -46,7 +46,7 @@ const page = () => {
         {/* image with text */}
         <div className="flex flex-col items-start lg:flex-row lg:items-start gap-4 mt-20 relative">
           <Image
-            src="/14528309d59c6a0c3a34eb8a4bc0b7ffe864f983.png"
+            src="/about-people.jpg.png"
             alt="man image"
             width={500}
             height={800}
@@ -99,7 +99,7 @@ const page = () => {
           </div>
         </div>
 
-        <p className='text-[14px] text-gray-900 mt-20'>
+        <p className="text-[14px] text-gray-900 mt-20">
           In nec purus eget neque accumsan finibus. Duis condimentum elit ut
           libero commodo iaculis. Donec augue diam, tristique et ultricies nec,
           consectetur quis enim. Nullam id rutrum ex. Aliquam a lectus id lacus

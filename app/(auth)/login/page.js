@@ -3,16 +3,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import api from "@/lib/axios";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "@/lib/redux/featuers/authSlice";
+import { loginUser } from "../../redux/slices/authSlice";
 
 export default function Loign() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
   const dispatch = useDispatch();
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const {  loading, error } = useSelector((state) => state?.auth);
 
   const handleLogin = async (e) => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import { signupUser } from "@/lib/redux/featuers/authSlice";
+import { signupUser } from "../../redux/slices/authSlice";
 
 export default function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
