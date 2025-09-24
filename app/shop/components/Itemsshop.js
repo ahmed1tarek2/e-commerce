@@ -1,12 +1,11 @@
+"use client"
 import React from "react";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Productcard from "./Productcard";
 import Pagination from "./Pagination";
 import useSelector from "react-redux"
 const Itemsshop = () => {
-  // const products = useSelector((state) => state.products.items)
+  // const items = useSelector(state => state.products)
   return (
     <div className="grow-10 px-2">
       {/* image div */}
@@ -30,7 +29,7 @@ const Itemsshop = () => {
       {/* product card */}
       <Productcard />
       {/* pagination */}
-      {/* {products.length >= 1 ? (
+      {/* {items.length >= 1 ? (
         <Pagination getPage={1} pageCount={500} />
       ) : null} */}
     </div>
