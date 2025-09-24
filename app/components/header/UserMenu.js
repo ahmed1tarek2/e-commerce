@@ -6,7 +6,8 @@ import { User } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser,userData } from "@/lib/redux/featuers/authSlice";
+import { logoutUser, userData } from "@/lib/redux/features/authSlice";
+
 import { useUser } from "@/hooks/useUser";
 
 export default function UserMenu() {
@@ -15,17 +16,16 @@ export default function UserMenu() {
   const router = useRouter();
   const dispatch = useDispatch();
   // const { loading, error,user } = useSelector((state) => state.auth);
-   const { user, loading } = useUser();
-  const getUserData = async()=>{
-     try {
-       const result = await dispatch(userData());
-       if (result.meta.requestStatus === "fulfilled") {
-
-       }
-     } catch (err) {
-       toast.error("Logout failed ");
-     }
-  }
+  const { user, loading } = useUser();
+  const getUserData = async () => {
+    try {
+      const result = await dispatch(userData());
+      if (result.meta.requestStatus === "fulfilled") {
+      }
+    } catch (err) {
+      toast.error("Logout failed ");
+    }
+  };
   // Fetch logged-in user
   // useEffect(() => {
   //   getUserData();
@@ -47,11 +47,10 @@ export default function UserMenu() {
   const handleLogout = async () => {
     try {
       const result = await dispatch(logoutUser());
-      if(result.meta.requestStatus === "fulfilled")     {
-         toast.success("Logged out");
-         router.push('/login')
-      } 
-   
+      if (result.meta.requestStatus === "fulfilled") {
+        toast.success("Logged out");
+        router.push("/login");
+      }
     } catch (err) {
       toast.error("Logout failed ");
     }
