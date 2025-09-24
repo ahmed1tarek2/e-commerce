@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 import Top from './Top'
 import Nav from './Nav'
-import Bottom from './Bottom'
+// import Bottom from './Bottom'
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);

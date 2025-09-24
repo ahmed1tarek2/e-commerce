@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import UserMenu from "./UserMenu";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import Link from "next/link"
+import Bottom from "./Bottom";
 
 const Nav = ({ open, setOpen }) => {
   return (
@@ -54,6 +55,8 @@ const Nav = ({ open, setOpen }) => {
         </div>
       </div>
 
+      <Bottom />
+
       {/* Mobile Menu Dropdown */}
       {open && (
         <div className="lg:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col gap-4">
@@ -69,11 +72,21 @@ const Nav = ({ open, setOpen }) => {
           {/* User Menu */}
           <UserMenu />
 
-          <Link href="/" className="block text-left text-gray-600">Home</Link>
-          <Link href='/shop' className="block text-left text-gray-600">Shop</Link>
-           <Link href="/blog" className="block text-left text-gray-600">Blog</Link>
-          <Link href="/about" className="block text-left text-gray-600">About</Link>
-          <Link href="/contact" className="block text-left text-gray-600">Contact</Link>
+          <Link href="/" className="block text-left text-gray-600">
+            Home
+          </Link>
+          <Link href="/shop" className="block text-left text-gray-600">
+            Shop
+          </Link>
+          <Link href="/blog" className="block text-left text-gray-600">
+            Blog
+          </Link>
+          <Link href="/about" className="block text-left text-gray-600">
+            About
+          </Link>
+          <Link href="/contact" className="block text-left text-gray-600">
+            Contact
+          </Link>
         </div>
       )}
     </nav>
@@ -88,6 +101,7 @@ export default Nav;
 // import Logo from '../Logo'
 // import UserMenu from "./UserMenu"
 // import { ShoppingCart } from "lucide-react";
+// import Bottom from './Bottom';
 
 // const Nav = () => {
 //   return (
