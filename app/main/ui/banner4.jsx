@@ -36,7 +36,7 @@ const Banner4 = (props) => {
           className="font-medium 
         text-xs leading-5 text-white w-[6.258rem] 
         h-[2.125rem] border border-[#C2C2D3] rounded-4xl
-         bg-[#C2C2D3]"
+         bg-[#C2C2D3] cursor-pointer"
         >
           Shop Now
         </button>

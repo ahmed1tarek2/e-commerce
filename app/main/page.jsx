@@ -30,6 +30,8 @@ const MainPage = () => {
           desc="A different kind of grocery store"
         />
       </div>
+      <CategorySwiper card={<Category />} />
+      <BestSeller />
       <div className="w-[75rem] px-3 grid grid-cols-3 gap-9 py-6">
         <Banner4
           photo="/banner41.png"
@@ -50,6 +52,7 @@ const MainPage = () => {
           desc="Breakfast made better"
         />
       </div>
+      <FeaturedPro />
       <Save10 />
       <div className="w-[74rem] grid grid-cols-3 gap-5 py-5">
         <Grocery
@@ -71,9 +74,6 @@ const MainPage = () => {
           date="Jan 13 2025"
         />
       </div>
-      <CategorySwiper card={<Category/>}/>
-      <BestSeller/>
-      <FeaturedPro/>
     </div>
   );
 };

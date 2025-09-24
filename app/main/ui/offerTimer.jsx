@@ -2,7 +2,7 @@ import CountdownDesign from "./uiComp/timer";
 
 const OfferTimer = () => {
   return (
-    <div className="flex justify-between items-center gap-10">
+    <div className="flex justify-between items-center gap-10 mb-6">
       <div >
         <h3 className="font-light text-[1.625rem] leading-8 text-[#233A95] text-right">
           Special Offers of the week!

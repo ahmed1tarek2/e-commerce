@@ -12,7 +12,7 @@ const Banner3 = (props) => {
           </h2>
         </div>
         <p className="font-normal text-xs py-4 text-[#9B9BB4]">{desc}</p>
-        <button className="font-medium text-xs leading-5 text-white w-[6.258rem] h-[2.125rem] border border-[#ED174A] rounded-4xl bg-[#ED174A]">
+        <button className="font-medium text-xs leading-5 text-white w-[6.258rem] h-[2.125rem] border border-[#ED174A] rounded-4xl bg-[#ED174A] cursor-pointer">
           Shop Now
         </button>
       </div>

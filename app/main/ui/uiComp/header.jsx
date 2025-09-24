@@ -1,5 +1,5 @@
 import { MoveRight } from "lucide-react";
-const Header = ({par,head}) => {
+const Header = ({ par, head }) => {
   return (
     <div className="flex justify-between items-center pb-2">
       <div>
@@ -21,6 +21,7 @@ const Header = ({par,head}) => {
         rounded-4xl border border-[#D9D9E9]
         font-medium text-xs leading-5 text-[#9B9BB4]
         flex justify-center items-center gap-2
+        cursor-pointer
         "
       >
         View All
@@ -30,4 +31,4 @@ const Header = ({par,head}) => {
   );
 };
 
-export default Header
+export default Header;
