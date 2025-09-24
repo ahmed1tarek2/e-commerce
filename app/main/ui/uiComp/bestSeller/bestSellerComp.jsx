@@ -1,7 +1,8 @@
-import { pro } from "@/app/main/data/data";
+
 import Items from "./items";
 import Image from "next/image";
 import DescBanner from "./descBanner";
+import { pro } from "../../../data/data";
 
 const BestSellerComp = () => {
   return (
