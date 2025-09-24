@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+
 import Items from "./uiComp/bestSeller/items";
 import Header from "./uiComp/header";
 import { categories } from "../data/catgory"; // ✅ تأكد من المسار

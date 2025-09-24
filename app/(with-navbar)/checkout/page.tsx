@@ -126,7 +126,7 @@ const CheckoutPage: React.FC = () => {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#35AFA0]"
               />
             </div>
             <div>
@@ -140,7 +140,7 @@ const CheckoutPage: React.FC = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#35AFA0]"
               />
             </div>
             <div>
@@ -153,7 +153,7 @@ const CheckoutPage: React.FC = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#35AFA0]"
               />
             </div>
             <div>
@@ -167,7 +167,7 @@ const CheckoutPage: React.FC = () => {
                 value={formData.city}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#35AFA0]"
               />
             </div>
             <div className="md:col-span-2">
@@ -181,7 +181,7 @@ const CheckoutPage: React.FC = () => {
                 value={formData.address}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#35AFA0]"
               />
             </div>
             <div className="md:col-span-2">
@@ -193,7 +193,7 @@ const CheckoutPage: React.FC = () => {
                 name="paymentMethod"
                 value={formData.paymentMethod}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#35AFA0]"
               >
                 <option value="Credit Card">Credit Card</option>
                 <option value="Cash on Delivery">Cash on Delivery</option>
@@ -204,7 +204,7 @@ const CheckoutPage: React.FC = () => {
             <div className="md:col-span-2">
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+                className="w-full bg-[#35AFA0] text-white py-3 px-6 rounded-md font-medium hover:bg-black focus:outline-none focus:ring-2 focus:ring-[#35AFA0] transition duration-200"
               >
                 Confirm Order - ${totalPrice.toFixed(2)}
               </button>
