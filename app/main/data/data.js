@@ -21,7 +21,7 @@ export const pro = [
     },
     {
       name: "SToK Un-Sweet Black Cold Brew Iced Coffee",
-      price_old: null,
+      price_old: 22,
       price_new: 65.0,
       discount: null,
       stock: "IN STOCK",
